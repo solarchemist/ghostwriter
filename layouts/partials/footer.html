@@ -13,18 +13,36 @@
                 </div>
 
                 <p class="footer-copyright">
-                    <span>&copy; {{ .Site.LastChange.Format "2006" }} / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                    <span><i class="fa fa-creative-commons"></i> {{ .Site.LastChange.Format "2006" }}, chepec.se</span>
                 </p>
                 <p class="footer-copyright">
-                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
-                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                    <span><a href="/credits" title="Standing on the shoulders of a software stack">Credits</a></span>
+                    &nbsp;//&nbsp;
+                    <span><a href="/license" title="Content on this site is CC BY-SA 4.0">License</a></span>
+                    &nbsp;//&nbsp;
+                    <span><a href="https://www.r-bloggers.com/" title="R news and tutorials contributed by hundreds R bloggers">R-bloggers.com</a></span>
                 </p>
             </div>
         </footer>
 
         <script src="{{ .Site.BaseURL }}js/jquery-1.11.3.min.js"></script>
         <script src="{{ .Site.BaseURL }}js/jquery.fitvids.js"></script>
-        
+
+        <!-- MathJax -->
+        {{ if and (not .Params.disable_mathjax) (or (in (string .Content) "\\") (in (string .Content) "$")) }}
+            <script src="{{ "/js/math-code.js" | relURL }}"></script>
+            <script type="text/x-mathjax-config">
+              MathJax.Hub.Config({
+                 extensions: ["[Contrib]/siunitx/siunitx.js",
+                              "[Contrib]/mhchem/mhchem.js"],
+                   TeX: {
+                       equationNumbers: { autoNumber: "AMS" }
+                   }
+              });
+         </script>
+            <script async src="{{ .Site.Params.MathJaxCDN | default "//cdn.bootcss.com" }}/mathjax/{{ .Site.Params.MathJaxVersion | default "2.7.1" }}/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        {{ end }}
+
         {{ if .Site.Params.highlightJsUrl }}
             <script src="{{ .Site.Params.highlightJsUrl }}"></script>
         {{ else if .Site.Params.highlightJsLocalUrl }}
@@ -32,7 +50,12 @@
         {{ else }}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         {{ end }}
-        
+
+        <!-- Mastodon shortcode JS, courtesy of https://github.com/kevingimbel/hugo-shortcodes -->
+        {{ if ($.Page.Scratch.Get "include_mastodon") "true" }}
+            <script src="https://mastodon.social/embed.js" async="async"></script>
+        {{ end }}
+
         <script src="{{ .Site.BaseURL }}js/scripts.js"></script>
     </body>
 </html>

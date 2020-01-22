@@ -69,24 +69,11 @@ blockquote {
 }
 
 img {
+    // center align all images /TA
     display: block;
-    margin: 40px 0;
+    margin: auto;
     width: auto;
     max-width: 100%;
-
-    &[src$="align-center"] {
-        margin: auto;
-    }
-
-    &[src$="align-left"] {
-        float: left;
-        margin-right: 40px;
-    }
-    
-    &[src$="align-right"] {
-        float: right;
-        margin-left: 40px;
-    }
 }
 
 pre {
@@ -185,6 +172,8 @@ table {
         content: "";
         display: block;
         /* This must be the same as the height of the footer */
+        /* Note: I tested lowering this value - looked OK on frontpage, but seriously
+           messes with post layout (end of post crashes into footer) /TA */
         height: 265px;
     }
 }
@@ -547,6 +536,9 @@ table {
     background: $secondary;
     color: #D3D3D3;
     height: 265px;
+    /* Note: I tested lowering this value to get rid of vertical whitespace
+       on the frontpage, but that removed too much whitespace between
+       posts and the site footer /TA 190119 */
     margin-top: 95px;
     overflow: auto;
 

@@ -3,26 +3,24 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ .Title }} &middot; {{ .Site.Author.name }}</title>
+        <title>{{ .Title }}</title>
         <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         {{ hugo.Generator }}
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{ if .Params.Citation_doi }}<meta name="citation_doi" content="{{ .Params.Citation_doi }}" />{{ end }}
         {{ if .Site.Params.opengraph }}{{ partial "opengraph.html" . }}{{ end }}
         <link rel="stylesheet" href="{{ .Site.BaseURL }}dist/styles.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="canonical" href="{{ .Permalink }}">
         {{ if .OutputFormats.Get "RSS" }}
             <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml">
         {{ end }}
         {{ partial "extra-in-head.html" . }}
-        {{ partial "exponea.html" . }}
-        {{ partial "fathom.html" . }}
     </head>
     <body>
-        {{ template "_internal/google_analytics.html" . }}
 
         <div id="wrapper">
             <header class="site-header">
@@ -37,15 +35,37 @@
                                 <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
                             </h1>
                         {{ end }}
-                        <a class="button-square" href="{{ .Site.BaseURL }}index.xml"><i class="fa fa-rss"></i></a>
+
+                        <!-- Social buttons -->
                         {{ with .Site.Params.twitter }}
-                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}" rel="me">
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="@solarchemist" href="{{ . }}" rel="me">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         {{ end }}
-                        {{ with .Site.Params.facebook }}
-                            <a class="button-square button-social hint--top" data-hint="Facebook" title="Facebook" href="{{ . }}" rel="me">
-                                <i class="fa fa-facebook"></i>
+                        {{ with .Site.Params.mastodon }}
+                            <a class="button-square button-social hint--top" data-hint="Mastodon" title="@solarchemist@scholar.social" href="{{ . }}" rel="me">
+                                <i class="fa fa-mastodon"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.reddit }}
+                            <a class="button-square button-social hint--top" data-hint="Reddit" title="u/chepec" href="{{ . }}" rel="me">
+                                <i class="fa fa-reddit"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.linkedin }}
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn profile" href="{{ . }}" rel="me">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.gplus }}
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+ page" href="{{ . }}" rel="me">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        {{ end }}
+                        <!-- Data/code repositories -->
+                        {{ with .Site.Params.github }}
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="{{ . }}" rel="me">
+                                <i class="fa fa-github-alt"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.gitlab }}
@@ -53,9 +73,9 @@
                                 <i class="fa fa-gitlab"></i>
                             </a>
                         {{ end }}
-                        {{ with .Site.Params.github }}
-                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="{{ . }}" rel="me">
-                                <i class="fa fa-github-alt"></i>
+                        {{ with .Site.Params.gitea }}
+                            <a class="button-square button-social hint--top" data-hint="Gitea" title="Gitea" href="{{ . }}" rel="me">
+                                <i class="fa fa-gitea"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.stackoverflow }}
@@ -63,21 +83,44 @@
                                 <i class="fa fa-stack-overflow"></i>
                             </a>
                         {{ end }}
-                        {{ with .Site.Params.linkedin }}
-                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="{{ . }}" rel="me">
-                                <i class="fa fa-linkedin"></i>
+                        <!-- Academic buttons -->
+                        {{ with .Site.Params.orcid }}
+                            <a class="button-square button-social hint--top" data-hint="ORCID" title="ORCID 0000-0001-6717-0408" href="{{ . }}" rel="me">
+                                <i class="ai ai-orcid"></i>
                             </a>
                         {{ end }}
-                        {{ with .Site.Params.gplus }}
-                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="{{ . }}" rel="me">
-                                <i class="fa fa-google-plus"></i>
+                        {{ with .Site.Params.googlescholar }}
+                            <a class="button-square button-social hint--top" data-hint="Google Scholar" title="Google Scholar" href="{{ . }}" rel="me">
+                                <i class="ai ai-google-scholar"></i>
                             </a>
                         {{ end }}
+                        {{ with .Site.Params.impactstory }}
+                            <a class="button-square button-social hint--top" data-hint="Impactstory" title="Impactstory" href="{{ . }}" rel="me">
+                                <i class="ai ai-impactstory"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.mendeley }}
+                            <a class="button-square button-social hint--top" data-hint="Mendeley" title="Mendeley" href="{{ . }}" rel="me">
+                                <i class="ai ai-mendeley"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.zotero }}
+                            <a class="button-square button-social hint--top" data-hint="Zotero" title="Zotero" href="{{ . }}" rel="me">
+                                <i class="ai ai-zotero"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.hypothesis }}
+                            <a class="button-square button-social hint--top" data-hint="Hypothes.is" title="Hypothes.is" href="{{ . }}" rel="me">
+                                <i class="ai ai-hypothesis"></i>
+                            </a>
+                        {{ end }}
+                        <!-- Email -->
                         {{ with .Site.Params.email }}
-                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:{{ . }}">
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email {{ . }}" href="mailto:{{ . }}" rel="me">
                                 <i class="fa fa-envelope"></i>
                             </a>
                         {{ end }}
+                        <a class="button-square" href="{{ .Site.BaseURL }}index.xml" title="Subscribe to this site" rel="me"><i class="fa fa-rss"></i></a>
                     </div>
 
                     <ul class="site-nav">
