@@ -52,6 +52,11 @@
                                 <i class="fa fa-reddit"></i>
                             </a>
                         {{ end }}
+                        {{ with .Site.Params.shaarli }}
+                            <a class="button-square button-social hint--top" data-hint="Shaarli" title="Bookmarks and short posts" href="{{ . }}" rel="me">
+                                <i class="fa fa-shaarli"></i>
+                            </a>
+                        {{ end }}
                         {{ with .Site.Params.linkedin }}
                             <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn profile" href="{{ . }}" rel="me">
                                 <i class="fa fa-linkedin"></i>
@@ -120,7 +125,7 @@
                                 <i class="fa fa-envelope"></i>
                             </a>
                         {{ end }}
-                        <a class="button-square" href="{{ .Site.BaseURL }}index.xml" title="Subscribe to this site" rel="me"><i class="fa fa-rss"></i></a>
+                        <a class="button-square" href="{{ .Site.BaseURL }}index.xml" title="Subscribe to this blog using RSS" rel="me"><i class="fa fa-rss"></i></a>
                     </div>
 
                     <ul class="site-nav">
