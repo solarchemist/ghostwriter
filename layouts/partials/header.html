@@ -89,6 +89,11 @@
                             </a>
                         {{ end }}
                         <!-- Academic buttons -->
+                        {{ with .Site.Params.figshare }}
+                            <a class="button-square button-social hint--top" data-hint="Figshare" title="Figshare" href="{{ . }}" rel="me">
+                                <i class="ai ai-figshare"></i>
+                            </a>
+                        {{ end }}
                         {{ with .Site.Params.orcid }}
                             <a class="button-square button-social hint--top" data-hint="ORCID" title="ORCID 0000-0001-6717-0408" href="{{ . }}" rel="me">
                                 <i class="ai ai-orcid"></i>

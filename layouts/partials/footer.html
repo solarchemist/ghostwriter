@@ -51,10 +51,10 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         {{ end }}
 
-        <!-- Mastodon shortcode JS, courtesy of https://github.com/kevingimbel/hugo-shortcodes -->
-        {{ if ($.Page.Scratch.Get "include_mastodon") "true" }}
-            <script src="https://mastodon.social/embed.js" async="async"></script>
-        {{ end }}
+        <!-- To embed Mastodon toots, look into 
+        https://github.com/kevingimbel/hugo-kg-shortcodes
+        https://kevingimbel.github.io/hugo-kg-shortcodes/mastodon/ 
+        -->
 
         <script src="{{ .Site.BaseURL }}js/scripts.js"></script>
     </body>
