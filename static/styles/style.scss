@@ -231,7 +231,6 @@ table {
     font-size: 14px;
     font-weight: 600;
     margin: 0;
-    text-transform: uppercase;
 
     a {
         float: left;
@@ -276,7 +275,9 @@ table {
     margin: 0 0 20px;
     padding: 0 0 20px;
     text-align: center;
-    text-transform: uppercase;
+    // I'm trying to make post subtitles (class=post-description) non-uppercase
+    // But since there is no post-description class defined here, I assume the text-transform is inherited from this post-header class
+    text-transform: none;
 }
 
 .post-title,
@@ -285,7 +286,7 @@ table {
     font-weight: 700;
     margin: 15px 0;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .page-title { margin: 15px 40px; }
@@ -498,7 +499,7 @@ table {
     font-size: 52px;
     font-weight: 700;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
     vertical-align: middle;
 }
 
@@ -509,7 +510,7 @@ table {
     line-height: 1;
     margin: 25px 0 0;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
 
     span {
         display: inline-block;
