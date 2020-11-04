@@ -2,6 +2,14 @@
 
 Enhanced port of the Ghost "[ghostwriter](https://github.com/roryg/ghostwriter)" theme to the [Hugo](https://gohugo.io) site generator.
 
+## My tweaks
+
+I have changed body text font from Open Sans to Merriweather 
+(I was inspired by [renkun.me](https://renkun.me/2019/12/11/writing-r-in-vscode-a-fresh-start)).
+
+Tables are in the body still use Open Sans, but that's ok, I think it looks good.
+
+
 ## Installation
 
 Inside the folder of your Hugo site run:
