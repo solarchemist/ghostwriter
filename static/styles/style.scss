@@ -22,6 +22,8 @@ body {
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
     text-transform: none;
+    // headers use a sans serif font, to contrast with body text
+    font-family: "Open Sans", arial, sans-serif;
 }
 
 h1 { font-size: 26px; }
@@ -34,13 +36,6 @@ h6 { font-size: 14px; margin-bottom: 12px; }
 p {
     line-height: 1.8;
     margin: 0 0 30px;
-    /* 
-      Setting Merriweather font here affects most body-text,
-      except for:
-      + post-title, (set to Merriweather explicitly)
-      + ul/ol, (how to fix?)
-    */
-    font-family: "Merriweather", serif;
 }
 
 a {
@@ -51,9 +46,6 @@ a {
 ul, ol {
     line-height: 1.4;
     margin: 0 0 20px;
-
-    // crap, this also affects main menu items, the front page!
-    // font-family: "Merriweather", serif;
 
     ul, ol { margin: 10px 0 0 20px; }
 
@@ -276,9 +268,24 @@ table {
 /* Post */
 /* ============================================================ */
 
+// sans font and italic style for Table of Contents
+#TOC {
+    font-family: "Open Sans", arial, sans-serif;
+    font-style: italic;
+}
+
 #latest-post { display: none; }
 
-.post-container { margin: 0 40px; }
+.post-container { 
+    margin: 0 40px; 
+    // use Merriweather font in all post body content
+    font-family: "Merriweather", serif;
+    /*
+      setting font here works well to only affect the post content, 
+      except for affecting the post title/subtitle. So those elements
+      have font-family set explicitly.
+    */
+}
 
 .post-header {
     // post subtitles: all uppercase Merriweather
@@ -297,7 +304,7 @@ table {
     margin: 15px 0;
     text-align: center;
     text-transform: uppercase;
-    // explicit font setting, overrides what's set in body
+    // explicit font setting, overrides what's set in post-container
     font-family: "Open Sans", arial, sans-serif;
 }
 
@@ -309,7 +316,7 @@ table {
     color: #AEADAD;
     font-size: 14px;
     font-weight: 600;
-    /* explicit font, override what's set in body */
+    // explicit font setting, overrides what's set in post-container
     font-family: "Open Sans", arial, sans-serif;
     line-height: 1;
     margin: 25px 0 0;
@@ -407,6 +414,9 @@ table {
 }
 
 .page-number { display: none; }
+
+// use smaller text size in blog post footnotes
+.footnotes { font-size: 82%; }
 
 /* ============================================================ */
 /* Post Index */
@@ -573,9 +583,6 @@ table {
     margin: 0;
     text-align: center;
     text-transform: uppercase;
-
-    // explicit font setting, overrides what's set in body
-    font-family: "Open Sans", arial, sans-serif;
 
     a {
         color: #656565;

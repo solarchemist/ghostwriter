@@ -13,12 +13,10 @@
         {{ if .Params.Citation_doi }}<meta name="citation_doi" content="{{ .Params.Citation_doi }}" />{{ end }}
         {{ if .Site.Params.opengraph }}{{ partial "opengraph.html" . }}{{ end }}
         <link rel="stylesheet" href="{{ .Site.BaseURL }}dist/styles.css">
-
-        <!-- Open Sans -->
+        <!-- Open Sans font -->
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-        <!-- Merriweather -->
+        <!-- Merriweather font -->
         <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
         <link rel="canonical" href="{{ .Permalink }}">
         {{ if .OutputFormats.Get "RSS" }}
             <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml">

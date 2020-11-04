@@ -4,10 +4,14 @@ Enhanced port of the Ghost "[ghostwriter](https://github.com/roryg/ghostwriter)"
 
 ## My tweaks
 
-I have changed body text font from Open Sans to Merriweather 
-(I was inspired by [renkun.me](https://renkun.me/2019/12/11/writing-r-in-vscode-a-fresh-start)).
+I have changed the font of all the body text 
+from Open Sans to Merriweather (a serif font), mainly for better readability
+(I must say I was inspired by the look of [renkun.me](https://renkun.me/2019/12/11/writing-r-in-vscode-a-fresh-start)).
 
-Tables are in the body still use Open Sans, but that's ok, I think it looks good.
+To make the post TOC visually distinct, I have set it to sans font with italic style.
+I'm not sure I'm completely happy with the TOC (it still takes too much space, I think).
+Ideally, the TOC would be floating in the sidebar, or else collapsible by the user. 
+But those changes require fiddling with blogdown and/or Javascript, so later, I suppose.
 
 
 ## Installation
