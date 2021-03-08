@@ -87,6 +87,11 @@
                                 <i class="fa fa-gitea"></i>
                             </a>
                         {{ end }}
+                        {{ with .Site.Params.codeberg }}
+                            <a class="button-square button-social hint--top" data-hint="Codeberg" title="Codeberg" href="{{ . }}" rel="me">
+                                <i class="fa fa-gitea"></i>
+                            </a>
+                        {{ end }}
                         {{ with .Site.Params.stackoverflow }}
                             <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="{{ . }}" rel="me">
                                 <i class="fa fa-stack-overflow"></i>
