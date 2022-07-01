@@ -1,0 +1,16 @@
+<!-- MathJax v3 worked with our site as configured below, but lacks support for siunitx -->
+<script>
+// https://docs.mathjax.org/en/latest/web/start.html#configuring-mathjax
+// https://geoffruddock.com/math-typesetting-in-hugo/
+MathJax = {
+    loader: { load: ['[tex]/mhchem'] },
+    tex: {
+        packages: { '[+]': ['mhchem'] }
+    }
+};
+</script>
+<!-- MathJax v3 recommends use of polyfill -->
+<!-- https://en.wikipedia.org/wiki/Polyfill_(programming) -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!-- https://www.mathjax.org/#gettingstarted -->
+<script type="text/javascript" id="MathJax-script" async src="{{ .Site.Params.mathjax.cdn }}/npm/mathjax@{{ .Site.Params.mathjax.version.full }}/es5/tex-mml-chtml.js"></script>

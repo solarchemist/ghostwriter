@@ -30,20 +30,11 @@
         <script src="{{ .Site.BaseURL }}js/jquery-1.11.3.min.js"></script>
         <script src="{{ .Site.BaseURL }}js/jquery.fitvids.js"></script>
 
-        <!-- MathJax -->
-        {{ if and (not .Params.disable_mathjax) (or (in (string .Content) "\\") (in (string .Content) "$")) }}
-            <script src="{{ "/js/math-code.js" | relURL }}"></script>
-            <script type="text/x-mathjax-config">
-              MathJax.Hub.Config({
-                 extensions: ["[Contrib]/siunitx/siunitx.js",
-                              "[Contrib]/mhchem/mhchem.js"],
-                   TeX: {
-                       equationNumbers: { autoNumber: "AMS" }
-                   }
-              });
-         </script>
-            <script async src="{{ .Site.Params.MathJaxCDN | default "//cdn.bootcss.com" }}/mathjax/{{ .Site.Params.MathJaxVersion | default "2.7.1" }}/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-        {{ end }}
+        <!-- MathJax v2 -->
+        {{ if eq .Site.Params.mathjax.version.major "2" }}{{ partial "mathjax-v2.html" . }}{{ end }}
+
+        <!-- MathJax v3 code not used, but saved in case siunitx support is ever introduced -->
+        {{ if eq .Site.Params.mathjax.version.major "3" }}{{ partial "mathjax-v3.html" . }}{{ end }}
 
         {{ if .Site.Params.highlightJsUrl }}
             <script src="{{ .Site.Params.highlightJsUrl }}"></script>

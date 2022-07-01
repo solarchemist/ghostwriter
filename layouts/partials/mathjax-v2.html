@@ -1,0 +1,12 @@
+<!-- math-code.js originally written by Yihui, see https://yihui.org/js/math-code.js -->
+<!-- NOTE: commenting out this script causes MathJax v2 to fail to render -->
+<script src='{{ "/js/math-code.js" | relURL }}'></script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+      extensions: [
+         "[Contrib]/siunitx/siunitx.js",
+         "[Contrib]/mhchem/mhchem.js"
+      ]
+   });
+</script>
+<script async src="{{ .Site.Params.mathjax.cdn }}/npm/mathjax@{{ .Site.Params.mathjax.version.full }}/{{ .Site.Params.mathjax.filename }}"></script>
