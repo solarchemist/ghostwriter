@@ -1,13 +1,13 @@
 <footer class="post-footer clearfix">
     {{ if .Params.tags }}
-        <p class="post-tags">
+        <div class="post-tags">
             <span>Tagged:</span>
             {{ $len := len .Params.tags }}
             {{ range $index, $tag := .Params.tags }}
                 <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
                 {{- if lt $index (sub $len 1) -}}, {{ end }}
             {{ end }}
-        </p>
+        </div>
     {{ end}}
 
     <div class="share">
@@ -50,4 +50,15 @@
             </a>
         {{ end }}
     </div>
+
+    {{ if .Params.sourcerepo }}
+        <br>
+        <!-- Reusing the post-tags CSS style for this "Corrections" section -->
+        <!-- This way, the URL to each blog post's Codeberg repo can be found in the footer -->
+        <div class="post-tags">
+            If you see <span>mistakes</span> or want to
+            <span>suggest changes</span> to this blog post,
+            please <a href="{{ .Params.sourcerepo }}/issues">create an issue</a>.
+        </div>
+    {{ end }}
 </footer>
