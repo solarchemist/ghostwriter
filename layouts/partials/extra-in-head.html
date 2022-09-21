@@ -6,10 +6,27 @@
    Fork Awesome
    An open source fork of Font Awesome
    https://forkaweso.me/Fork-Awesome/get-started/
+   I manually downloaded (latest commit, because Codeberg icon has still not been released)
+   https://github.com/ForkAwesome/Fork-Awesome/issues/360
+   Unfortunately, even in latest commit Codeberg icon is not available. I must admit I don't
+   understand how that works. The issue introducing the Codebergo icon was merged.
+   How is it not part of latest commit? We're still stuck using the Gitea icon.
+   https://raw.githubusercontent.com/ForkAwesome/Fork-Awesome/master/css/fork-awesome.css
+   https://raw.githubusercontent.com/ForkAwesome/Fork-Awesome/master/fonts/forkawesome-webfont.eot
+   https://raw.githubusercontent.com/ForkAwesome/Fork-Awesome/master/fonts/forkawesome-webfont.svg
+   https://raw.githubusercontent.com/ForkAwesome/Fork-Awesome/master/fonts/forkawesome-webfont.ttf
+   https://raw.githubusercontent.com/ForkAwesome/Fork-Awesome/master/fonts/forkawesome-webfont.woff
+   https://raw.githubusercontent.com/ForkAwesome/Fork-Awesome/master/fonts/forkawesome-webfont.woff2
+   into /static/css/ and /static/fonts/ respectively
 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-<!-- Academicons -->
-<link rel="stylesheet" href="{{ .Site.BaseURL }}css/academicons.min.css"/>
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/fork-awesome.css"/>
+<!--
+   Academicons
+   https://jpswalsh.github.io/academicons/
+   I manually downloaded the latest release (zip archive), placed the unminified
+   CSS-file in /static/css/ and the contents of the fonts directory in /static/fonts/
+-->
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/academicons.css"/>
 <!-- Matomo -->
 <script>
    var _paq = window._paq = window._paq || [];
