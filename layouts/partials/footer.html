@@ -25,8 +25,8 @@
             </div>
         </footer>
 
-        <script src="{{ .Site.BaseURL }}js/jquery-1.11.3.min.js"></script>
-        <script src="{{ .Site.BaseURL }}js/jquery.fitvids.js"></script>
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
 
         <!-- MathJax v2 -->
         {{ if eq .Site.Params.mathjax.version.major "2" }}{{ partial "mathjax-v2.html" . }}{{ end }}
@@ -37,7 +37,7 @@
         {{ if .Site.Params.highlightJsUrl }}
             <script src="{{ .Site.Params.highlightJsUrl }}"></script>
         {{ else if .Site.Params.highlightJsLocalUrl }}
-            <script src="{{ .Site.BaseURL }}{{ .Site.Params.highlightJsLocalUrl }}"></script>
+            <script src="/{{ .Site.Params.highlightJsLocalUrl }}"></script>
         {{ else }}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/highlight.min.js"></script>
         {{ end }}
@@ -47,6 +47,6 @@
         https://kevingimbel.github.io/hugo-kg-shortcodes/mastodon/
         -->
 
-        <script src="{{ .Site.BaseURL }}js/scripts.js"></script>
+        <script src="/js/scripts.js"></script>
     </body>
 </html>
