@@ -22,7 +22,7 @@
         <link rel="canonical" href="{{ .Permalink }}">
         <!-- Mastodon rel=me links for verification -->
         <link rel="me" href="https://scholar.social/@solarchemist">
-        <link rel="me" href="https://social.sunet.se/@solarchemist">
+        <link rel="me" href="https://toots.nu/@solarchemist">
         <!-- RSS advertisement -->
         {{ with .OutputFormats.Get "rss" -}}
            {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}

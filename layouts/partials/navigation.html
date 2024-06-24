@@ -1,5 +1,11 @@
 {{ range .Site.Menus.main.ByWeight }}
     <li class="site-nav-item">
-        <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
+        <!-- https://gohugo.io/functions/strings/toupper -->
+        <!-- https://gohugo.io/functions/strings/contains -->
+        <!-- This achieves uppercase of all menu names, but without forcing it
+            on the "title" (what's shown when hovering).
+        This explicitly checks if the menu item is "PhD" (check is case-sensitive)
+        and if so skips uppercasing. Bit of a hack, but it works :-) -->
+        <a title="{{ .Name }}" href="{{ .URL }}">{{ if strings.Contains .Name "PhD" }}{{ .Name }}{{ else }}{{ upper .Name }}{{ end }}</a>
     </li>
 {{ end }}

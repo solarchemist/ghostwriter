@@ -229,7 +229,11 @@ table tr {
    padding: 40px 0 0;
    overflow: auto;
    text-align: center;
-   text-transform: uppercase;
+   /* I want to put "PhD" (instead of "thesis") in the menu, but without uppercasing it */
+   /* https://stackoverflow.com/questions/8675414/override-css-text-transform */
+   /* NOTE! I opted to control uppercasing using Hugo templating INSTEAD of CSS */
+   /* please see partials/navigation.html in theme */
+   text-transform: none;
 }
 
 .site-title-wrapper {
