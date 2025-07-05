@@ -6,6 +6,31 @@
             on the "title" (what's shown when hovering).
         This explicitly checks if the menu item is "PhD" (check is case-sensitive)
         and if so skips uppercasing. Bit of a hack, but it works :-) -->
-        <a title="{{ .Name }}" href="{{ .URL }}">{{ if strings.Contains .Name "PhD" }}{{ .Name }}{{ else }}{{ upper .Name }}{{ end }}</a>
+        <!-- safeHTML works and allows us to use FontsAwesome icons in the menu name,
+        but the "upper" function messes with the safeHTML function, breaking everything -->
+        <!--
+        https://gohugo.io/functions/safe/html
+        https://discourse.gohugo.io/t/combining-string-functions-e-g-title-with-safehtml/44502
+        There seems to be no way to combine "upper" and "safeHTML"
+        -->
+        <!--
+        Perhaps using another approach - put the fa-icon string in its own field
+        https://gohugo.io/functions/go-template/with/#understanding-context
+        But I cannot figure out a syntax that does not throw errors...
+        > can't evaluate field Faicon in type *navigation.MenuEntry
+        Huh, it seems we cannot define custom fields in the menu map
+        https://gohugo.io/configuration/menus
+        https://discourse.gohugo.io/t/add-custom-meta-data-to-menu-entry/18969
+        https://gohugo.io/templates/menu
+        Actually we can, but only as a sub-field to "params"!
+        Narrow no-break space &#8239; https://stackoverflow.com/a/8515417/1198249
+        -->
+        <a title="{{ .Title | default .Name }}" href="{{ .URL }}">
+        {{ if strings.Contains .Name "PhD" }}
+            {{ with .Params.Preicon -}}<i class="{{ . }}"></i>&#8239;{{ end -}}{{ .Name }}{{ with .Params.Posticon -}}&nbsp;<i class="{{ . }}"></i>{{ end -}}
+        {{ else }}
+            {{ with .Params.Preicon -}}<i class="{{ . }}"></i>&#8239;{{ end -}}{{ .Name | upper }}{{ with .Params.Posticon -}}&nbsp;<i class="{{ . }}"></i>{{ end -}}
+        {{ end }}
+        </a>
     </li>
 {{ end }}
