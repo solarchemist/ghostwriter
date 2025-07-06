@@ -16,13 +16,14 @@
                     <span><i class="fa fa-creative-commons"></i> {{ .Site.LastChange.Format "2006" }}, solarchemist.se</span>
                 </p>
                 <p class="footer-copyright">
-                    <span><a href="/about" title="About solarchemist">About</a></span>
+                <!-- https://iansmcb.com/posts/handle-last-element-differently-when-looping-in-hugo -->
+                {{ range first 1 .Site.Menus.footer.ByWeight }}
+                    <span><a href="{{ .URL }}" title="{{ .Title | default .Name }}">{{ .Name }}</a></span>
+                {{ end }}
+                {{ range after 1 .Site.Menus.footer.ByWeight }}
                     &nbsp;//&nbsp;
-                    <span><a href="/source" title="License and source code">Source</a></span>
-                    &nbsp;//&nbsp;
-                    <span><a href="/credits" title="This blog is built on software :-)">Credits</a></span>
-                    &nbsp;//&nbsp;
-                    <span><a href="https://www.r-bloggers.com/" title="R news and tutorials contributed by hundreds of R bloggers">R-bloggers.com</a></span>
+                    <span><a href="{{ .URL }}" title="{{ .Title | default .Name }}">{{ .Name }}</a></span>
+                {{ end }}
                 </p>
             </div>
         </footer>
